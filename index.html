@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="disappear"><span><button onclick="startTimer();"></button></span></div>
     <div id="app"></div>
     <div id="myBlinkingDiv" class="big"></div>
 </body>
@@ -30,7 +31,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 5;
+const TIME_LIMIT = 1200;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -60,7 +61,7 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-startTimer();
+// startTimer();
 function ohNo() { document.getElementById("myBlinkingDiv").innerHTML = `<h1><span>THERE IS NO MORE TIME</span></h1>`
 };
 function onTimesUp() {
@@ -74,11 +75,13 @@ const t = setInterval(function () {
 }
 
 function startTimer() {
+    document.getElementById("disappear").innerHTML = `<span class="disappear" style="display: none"></span>`;
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(
       timeLeft
+    
     );
     setCircleDasharray();
     setRemainingPathColor(timeLeft);
