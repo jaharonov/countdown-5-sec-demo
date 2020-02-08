@@ -17,7 +17,7 @@
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
-
+const audio = new Audio('siren.mp3');
 const COLOR_CODES = {
   info: {
     color: "green"
@@ -63,7 +63,9 @@ document.getElementById("app").innerHTML = `
 `;
 
 // startTimer();
-function ohNo() { document.getElementById("myBlinkingDiv").innerHTML = `<h1><span>THERE IS NO MORE TIME</span></h1>`
+function ohNo() { 
+    audio.play();
+    document.getElementById("myBlinkingDiv").innerHTML = `<h1><span>THERE IS NO MORE TIME</span></h1>`
 };
 function onTimesUp() {
   ohNo();
